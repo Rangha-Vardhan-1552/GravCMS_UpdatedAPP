@@ -1,0 +1,41 @@
+name: Contactus
+slug: contactus
+type: plugin
+version: 0.1.0
+description: To know more details about company and feel free to contact us
+icon: plug
+author:
+  name: rangavardhan
+  email: rangavardhan1908@gmail.com
+homepage: https://github.com/rangha-vardhan-1552/grav-plugin-contactus
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/rangha-vardhan-1552/grav-plugin-contactus/issues
+docs: https://github.com/rangha-vardhan-1552/grav-plugin-contactus/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    text_var:
+      type: text
+      label: PLUGIN_CONTACTUS.TEXT_VARIABLE
+      help: PLUGIN_CONTACTUS.TEXT_VARIABLE_HELP
+permissions:
+  access:
+    admin.contact_data.access:
+      label: 'Access Contact Data'
+      description: 'Allows access to the Contact Us data menu item.'

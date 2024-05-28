@@ -1,0 +1,11 @@
+state: enabled
+email: rangavardhangamasu@gmail.com
+fullname: 'rangha vardhan'
+title: Admin
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$ql8zuCbX6gKJ9VsGETytPeLXMM1SpejiSTMJPf0dgoK1rBomHrB4.

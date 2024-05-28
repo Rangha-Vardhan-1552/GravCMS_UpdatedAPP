@@ -1,0 +1,31 @@
+enabled: true
+text_var: 'Custom Text added by the **Chatbot** plugin (disable plugin to remove)'
+active: true
+route: /plugin/chatbot
+filters:
+  category: blog
+chatbot_name: 'Q&A Chatbot'
+api_url: 'http://localhost:11434/api/generate'
+query_param: 'browser,question,subject,encode'
+query_output: JSON
+Latitude: 12
+Longitude: 34
+dropdown_field: 'question,subject'
+my_dynamic_select_field: ''
+my_multi_select_field:
+  my-multi-select-field-option1: option1
+  my-multi-select-field-option2: option2
+  my-multi-select-field-option3: '0'
+latitude: 17
+longitude: 78
+city_name: hyderabad
+radius: '20000'
+keyword: restaurant
+key: AIzaSyCbNamYgr3kXyFUCiV20PDutr96QrZp4Ro
+searchTerm: stair
+sort: asc
+offer: 'false'
+type: rent
+furnished: 'false'
+parking: 'false'
+message: hello

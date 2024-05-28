@@ -1,0 +1,121 @@
+
+<style>
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.content{
+  height: 300px;
+  width: 750px;
+  position: relative;
+  border-radius:5px;
+  margin:10px;
+}
+.content .images{
+  height: 100%;
+  width: 100%;
+}
+.content .images img{
+  height: 85%;
+  width: 100%;
+  background:black;
+}
+.btm-slides{
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.btm-slides span{
+  height: 20px;
+  width: 10px;
+  /* border: 1px solid white; */
+  border-radius:100%;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.sliders{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  cursor: pointer;
+  /* border: 2px solid white; */
+  background: rgba(255,255,255,0.1);
+}
+.sliders:hover{
+  background: rgba(255,255,255,0.2);
+}
+.right{
+  right: 0;
+}
+.left{
+  left:0;
+}
+.sliders span{
+  line-height: 41px;
+  font-size: 35px;
+  color: white;
+}
+</style>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <!-- <link rel="stylesheet" href="style.css"> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="content">
+         <div class="images">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYcYjA9mrv0__0q_40g-mQfPOuC7tTnPzFJtUIsKHvtA&s" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7r7eYWMLhJ1xKgPdGREYf8RxEsJC1s1K1WVHghG4mjCDrmIsmQIUJ3imhMHQh5v-D6QU&usqp=CAU" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
+            <!-- <img src="https://purviewservices.com/assets/images/home/deeptech/arvr.png" style="background-position: center;background-repeat: no-repeat;background-size: cover;"> -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn4hN3B9AYvEsRi85nlWAai49NRf4uIb1YS1HJyLcMZwJoU20YNPP5ivxZVuPK80yCbug&usqp=CAU" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYKXclXeAd3tCWj20d6qU3UGm-tuO2w3uUItZREqQEwQ&s" style="background-position: center;background-repeat: no-repeat;background-size: cover;">
+         </div>
+         <div class="btm-slides">
+            <span onclick="btm_slide(1)"></span>
+            <span onclick="btm_slide(2)"></span>
+            <span onclick="btm_slide(3)"></span>
+            <span onclick="btm_slide(4)"></span>
+            <span onclick="btm_slide(5)"></span>
+         </div>
+         <div class="sliders left" onclick="side_slide(-1)">
+            <span class="fas fa-angle-left"></span>
+         </div>
+         <div class="sliders right" onclick="side_slide(1)">
+            <span class="fas fa-angle-right"></span>
+         </div>
+      </div>
+      <script>
+         var indexValue = 1;
+         showImg(indexValue);
+         function btm_slide(e){showImg(indexValue = e);}
+         function side_slide(e){showImg(indexValue += e);}
+         function showImg(e){
+           var i;
+           const img = document.querySelectorAll('img');
+           const slider = document.querySelectorAll('.btm-slides span');
+           if(e > img.length){indexValue = 1}
+           if(e < 1){indexValue = img.length}
+           for(i = 0; i < img.length; i++){
+             img[i].style.display = "none";
+           }
+           for(i = 0; i < slider.length; i++){
+             slider[i].style.background = "rgba(255,255,255,0.1)";
+           }
+           img[indexValue-1].style.display = "block";
+           slider[indexValue-1].style.background = "white";
+         }
+      </script>
+   </body>
+</html>

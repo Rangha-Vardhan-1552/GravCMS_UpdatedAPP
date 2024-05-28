@@ -1,0 +1,41 @@
+name: Jobagreement
+slug: jobagreement
+type: plugin
+version: 0.1.0
+description: Description About Jobportal
+icon: plug
+author:
+  name: rangavardhangamasu@gmail.com
+  email: rangavardhan1908@gmail.com
+homepage: https://github.com/Rangha-Vardhan-1552/grav-plugin-jobagreement
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/Rangha-Vardhan-1552/grav-plugin-jobagreement/issues
+docs: https://github.com/Rangha-Vardhan-1552/grav-plugin-jobagreement/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    text_var:
+      type: text
+      label: PLUGIN_JOBAGREEMENT.TEXT_VARIABLE
+      help: PLUGIN_JOBAGREEMENT.TEXT_VARIABLE_HELP
+permissions:
+  access:
+    admin.jobagreement_data.access:
+      label: 'Access Job Agreement Data'
+      description: 'Allows access to the Contact Us data menu item.'

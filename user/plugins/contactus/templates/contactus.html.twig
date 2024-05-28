@@ -1,0 +1,92 @@
+
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="UTF-8">
+      <title>Contact Us</title>
+      <link rel="stylesheet" href="{{ url('plugin://contactus/css/contactus.css') }}">
+      <!-- Fontawesome CDN Link -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="left-side">
+          <div class="address details">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="topic">Address</div>
+            <div class="text-one">Purview services</div>
+            <div class="text-two">Madhapur</div>
+          </div>
+          <div class="phone details">
+            <i class="fas fa-phone-alt"></i>
+            <div class="topic">Phone</div>
+            <div class="text-one">9381903983</div>
+            <div class="text-two">9951569178</div>
+          </div>
+          <div class="email details">
+            <i class="fas fa-envelope"></i>
+            <div class="topic">Email</div>
+            <div class="text-one">nm@gmail.com</div>
+            <div class="text-two">ranghavardhan1908@gmail.com</div>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="topic-text">Send us a message</div>
+          <p>You can send me message from here. It's my pleasure to help you.</p>
+          <form id="contact-form" action="#" method='post'>
+            <div class="input-box">
+              <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+            <div class="input-box">
+              <input type="text" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="input-box message-box">
+              <input type="text" id="subject" name="subject" placeholder="Enter your subject">
+            </div>
+            <div class="button">
+              <input type="submit" value="Send Now" >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact-form');
+
+      form.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent default form submission
+          
+          const formData = new FormData(form); // Get form data
+          
+          // Optional: You can perform client-side validation here
+          
+          // Send form data to server using fetch API
+          fetch('/contactus', {
+              method: 'POST',
+              body: formData
+          })
+          .then(response => response.json()) // Assuming server returns JSON response
+          .then(data => {
+              // Handle server response here
+              console.log('Server response:', data);
+              // Optionally, you can show a success message or redirect the user
+              if (data.success){
+                alert("data sent successfully...!")
+              }
+          })
+          .catch(error => {
+              // Handle errors here
+              console.error('Error:', error);
+              // Optionally, show an error message to the user
+          });
+      });
+  });
+
+  </script>
+  </html>
+{% endblock %}

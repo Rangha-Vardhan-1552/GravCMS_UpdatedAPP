@@ -1,0 +1,67 @@
+name: Chatbot
+slug: chatbot
+type: plugin
+version: 0.1.0
+description: chatbot plugin for GRAV site
+icon: plug
+author:
+  name: rangha vardhan
+  email: rangavardhan1908@gmail.com
+homepage: https://github.com/rangha-vardhan-1552/grav-plugin-chatbot
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/rangha-vardhan-1552/grav-plugin-chatbot/issues
+docs: https://github.com/rangha-vardhan-1552/grav-plugin-chatbot/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    chatbot_name:
+      type: text
+      label: Chatbot_name
+      help: select the chatbot name
+    api_url:
+      type: select
+      label: api_url
+      help: Select the API_URL
+      options:
+        http://localhost:11434/api/generate: http://localhost:11434/api/generate
+        http://127.0.0.1:5000/stream_chatbot: http://127.0.0.1:5000/stream_chatbot
+      validate:
+        required: true
+    # api_url:
+    #   type: text
+    #   label: API URL
+    #   default: "https://localhost:8000/aibot"
+    #   validate:
+    #     required: true
+
+    # query_param:
+    #   type: selectize
+    #   label: Parameter
+    #   help: Select multiple items
+    #   multiple: true
+    #   validate:
+    #     required: true
+    # message:
+    #   type: text
+    #   label: message_param
+    #   help: select the prameter
+    # longitude:
+    #   type: number
+    #   label: Longitude
+    #   help: select the longitude
