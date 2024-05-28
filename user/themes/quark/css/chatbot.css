@@ -83,7 +83,7 @@
     .chatbot .chatbox {
       overflow-y: auto;
       height: 510px;
-      padding: 30px 20px 100px;
+      padding: 10px 0px 100px;
     }
     .chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
       width: 6px;
@@ -99,6 +99,7 @@
     .chatbox .chat {
       display: flex;
       list-style: none;
+      text-align: left;
     }
     .chatbox .outgoing {
       margin: 20px 0;
@@ -109,7 +110,7 @@
       height: 32px;
       color: #fff;
       cursor: default;
-      text-align: center;
+      /* text-align: center; */
       line-height: 32px;
       align-self: flex-end;
       background: #724ae8;
@@ -135,6 +136,7 @@
     .chatbox .incoming p {
       color: #000;
       background: #f2f2f2;
+      text-align: left;
     }
     .chatbot .chat-input {
       display: flex;
