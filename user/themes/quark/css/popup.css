@@ -44,3 +44,7 @@ body.show-popup {
 .close-popup:hover {
     background: #d32f2f;
 }
+
+.popup p {
+    margin-top: 30px;
+  }
