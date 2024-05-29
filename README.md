@@ -10,137 +10,185 @@ The underlying architecture of Grav is designed to use well-established and _bes
 
 # Requirements
 
-- PHP 7.3.6 or higher. Check the [required modules list](https://learn.getgrav.org/basics/requirements#php-requirements)
-- Check the [Apache](https://learn.getgrav.org/basics/requirements#apache-requirements) or [IIS](https://learn.getgrav.org/basics/requirements#iis-requirements) requirements
+PHP 7.3.6 or higher. Check the [required modules list](https://learn.getgrav.org/basics/requirements#php-requirements)
+Check the [Apache](https://learn.getgrav.org/basics/requirements#apache-requirements) requirements.Below requirements observed in above website links
+1. Web Server (Apache, Nginx, LiteSpeed, Lightly, IIS, etc.)
+2. PHP 7.3.6 or higher
+
+# PHP Requirements
+* curl (client for URL handling used by GPM)
+* ctype (used by symfony/yaml/Inline)
+* dom (used by grav/admin newsfeed)
+* gd (a graphics library used to manipulate images)
+* json (used by Symfony/Composer/GPM)
+* mbstring (multibyte string support)
+* openssl (secure sockets library used by GPM)
+* session (used by toolbox)
+* simplexml (used by grav/admin newsfeed)
+* xml (XML support)
+* zip extension support (used by GPM)
+Make sure whether all above modules are present or install properly during PHP installation.
+
+_**To check whether this above are installed or not** _
+
+* you will  find the **php.ini** file  in _C:\xampp\php\php.ini_  configuration file. now open that file in **VS code** and  **ctrl+f** to find the extensions.
+```
+;extension=openssl.so
+;extension=zip.so
+```
+And remove the leading semicolon. To enable the modules which require modules are missing.
+
+# Webservers
+- Grav is so simple and versatile that you don't even need a web server to run it. You can run it directly off the built-in PHP webserver, as long as you're running PHP 7.3.6 or later.
+
+- Testing with the built-in webservers is a useful way to check a Grav install and perform some brief development, but it is not recommended for a live site or even for advanced development tasks. We've outlined how in our Installation guide.
+
+- Even though technically you do not need a standalone web server, it is better to run one, even for local development. There are many great options available:
+
+### Mac
+- MacOS 10.14 Mojave already ships with the Apache Web server and PHP 7.1, so job done!
+1. MAMP/MAMP Pro comes with Apache, MySQL and of course PHP. It is a great way to get more control over which version of PHP you are running, setting up virtual hosts, plus other useful features such as automatically handling dynamic DNS.
+2. AMPPS is a software stack from Softaculous enabling Apache, PHP, Perl, Python,.. This includes everything you need (and more) for GRAV development.
+3. Brew Apache/PHP is an alternative approach that allows a fully configurable installation with various PHP versions.
+
+> **Note:** Any one of them should present in your system based on your requirement
+
+### Windows
+1. Laragon portable, isolated, fast & powerful universal development environment for PHP, Node.js, and more. It is fast, lightweight, easy-		to-use and easy-to-extend.
+2. XAMPP provides Apache, PHP, and MySQL in one simple package.
+3. EasyPHP provides a personal Web hosting package as well as a more powerful developer version.
+4. MAMP for Windows is a long-time Mac favorite, but now available for Windows.
+5. IIS with PHP is a fast way to run PHP on Windows.
+6. AMPPS is a software stack from Softaculous enabling Apache, PHP, Perl, Python,.. This includes everything you need (and more) for GRAV development.
+7. Linux Subsystem is a great way to Run a linux-like environment on Windows
+
+> **Note:** Any one of them should present in your system based on your requirement
 
 # Documentation
-
+#### If you face any difficulty while installing please visit official documentation given below
 The full documentation can be found from [learn.getgrav.org](https://learn.getgrav.org).
 
 # QuickStart
-
-These are the options to get Grav:
+Once you installed the PHP check whether it installed properly by following command:
+* open the **cmd** prompt, Enter
+```
+php --version
+```
+you can see the php version **ex: v4.2.12,** in command prompt.
+_whooohooo..! You did well🥳..._
 
 ### Downloading a Grav Package
 
-You can download a **ready-built** package from the [Downloads page on https://getgrav.org](https://getgrav.org/downloads)
-
-### With Composer
-
-You can create a new project with the latest **stable** Grav release with the following command:
-
-```
-$ composer create-project getgrav/grav ~/webroot/grav
-```
+You can download a **Grav Application** package from my  Github Repo [https://github.com/Rangha-Vardhan-1552/GravCMS_UpdatedAPP](https://github.com/Rangha-Vardhan-1552/GravCMS_UpdatedAPP)
 
 ### From GitHub
 
-1. Clone the Grav repository from [https://github.com/getgrav/grav]() to a folder in the webroot of your server, e.g. `~/webroot/grav`. Launch a **terminal** or **console** and navigate to the webroot folder:
+1. Clone the Grav repository from [https://github.com/Rangha-Vardhan-1552/GravCMS_UpdatedAPP]() to a  specific folder in your system
+2. e.g. `GravApp`. Launch a **terminal** or **console** and navigate to the GravApp folder:
    ```
-   $ cd ~/webroot
-   $ git clone https://github.com/getgrav/grav.git
+   $ cd GravApp
+   $ git clone https://github.com/Rangha-Vardhan-1552/GravCMS_UpdatedAPP
    ```
+   
+> **Note:** Ensure that php version should be able to see even you check  in Grav App folder as well . If not ,check the enviornmental variable path  set correctly or not.
+> you can observe the path like : **C:\xampp\php **.
 
-2. Install the **plugin** and **theme dependencies** by using the [Grav CLI application](https://learn.getgrav.org/advanced/grav-cli) `bin/grav`:
-   ```
-   $ cd ~/webroot/grav
-   $ bin/grav install
-   ```
-
-Check out the [install procedures](https://learn.getgrav.org/basics/installation) for more information.
-
-# Adding Functionality
-
-You can download [plugins](https://getgrav.org/downloads/plugins) or [themes](https://getgrav.org/downloads/themes) manually from the appropriate tab on the [Downloads page on https://getgrav.org](https://getgrav.org/downloads), but the preferred solution is to use the [Grav Package Manager](https://learn.getgrav.org/advanced/grav-gpm) or `GPM`:
-
+### Run Application
+Now it's time to Run the application ,If  above steps are clear you are ready to make application run🤩
 ```
-$ bin/gpm index
+php -S localhost:8000 system/router.php
 ```
+> **Note** Make sure you should be in your root folder i.e. GravApp folder ,here
 
-This will display all the available plugins and then you can install one or more with:
+>_If there  every things works fine then  following  line is observed <br/> **Wed May 29 21:26:02 2024] PHP 8.2.12 Development Server (http://localhost:8000) started**_
 
-```
-$ bin/gpm install <plugin/theme>
-```
+Visit [http://localhost:8000](http://localhost:8000)
 
-# Updating
+> _**Whooohoo🥳🤩..! Awesome, Now you are seeing the Grav Application**_
 
-To update Grav you should use the [Grav Package Manager](https://learn.getgrav.org/advanced/grav-gpm) or `GPM`:
+# Ollama Installation
+### What is OLLAMA?
+OLLAMA is a cutting-edge platform designed to run open-source large language models locally on your machine. It takes the complexity out of the equation by bundling model weights, configuration, and data into a single package defined by a Modelfile. This means you no longer have to worry about intricate setup and configuration details, including leveraging your GPU for better performance.
 
-```
-$ bin/gpm selfupgrade
-```
+### Features and Benefits
+* **Simplicity:** OLLAMA offers a straightforward setup process. You don't need a PhD in machine learning to get it up and running.
 
-To update plugins and themes:
+* **Cost-Effectiveness:** Running models locally means you're not racking up cloud costs. Your wallet will thank you.
 
-```
-$ bin/gpm update
-```
+* **Privacy:** With OLLAMA, all data processing happens on your local machine. This is a big win for user privacy.
 
-## Upgrading from older version
+* **Versatility:** OLLAMA is not just for Python aficionados. Its flexibility allows it to be used in various applications, including web development.
 
-* [Upgrading to Grav 1.7](https://learn.getgrav.org/16/advanced/grav-development/grav-17-upgrade-guide)
-* [Upgrading to Grav 1.6](https://learn.getgrav.org/16/advanced/grav-development/grav-16-upgrade-guide)
-* [Upgrading from Grav <1.6](https://learn.getgrav.org/16/advanced/grav-development/grav-15-upgrade-guide)
+### How to Set Up OLLAMA 
+#### Windows
+Setting up OLLAMA on Windows is a breeze. Here's how:
+1. **Download the Executable:** Visit the official OLLAMA GitHub repository and download the latest Windows executable.
+     ```
+     git clone https://github.com/jmorganca/ollama.git	
+     ```
+     
+     **or**
+     
+	> visit the website [Ollama install](https://ollama.com/download/windows)
 
-# Contributing
-We appreciate any contribution to Grav, whether it is related to bugs, grammar, or simply a suggestion or improvement! Please refer to the [Contributing guide](CONTRIBUTING.md) for more guidance on this topic.
+2. **Run the Installer:** Double-click the downloaded executable to start the installation process. Follow the on-screen instructions.
+3. **Open Command Prompt:** Once installed, open the Command Prompt and navigate to the directory where OLLAMA is installed.
+ 	```
+    cd path/to/ollama
+    ```
+    _ex: C:\Users\username\Downloads_>
+    
+4. **Run OLLAMA:** Use the following command to run OLLAMA.
+	```
+    ollama.exe run
+    ```
+5. **Verify Installation:**
+	After the installation is complete, you can verify that Ollama is installed correctly by running:
+    ```
+    ollama --version
+    ```
+And that's it! You've successfully set up OLLAMA on a Windows machine. The process is straightforward, and within minutes, you'll be ready to run local language models on your Windows PC.
 
-## Security issues
-If you discover a possible security issue related to Grav or one of its plugins, please email the core team at contact@getgrav.org and we'll address it as soon as possible.
+#### Mac
+**To install Ollama on a Mac, follow these steps:**
+1. **Install Homebrew** (if you haven't already):
+    Homebrew is a package manager for macOS that makes it easy to install software.
+    Open the Terminal application and run the following command:
+    ```
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+2. **Install Ollama:**
+	Once Homebrew is installed, you can use it to install Ollama.
+    In the Terminal, run the following command:
+    ```
+    brew install ollama
+    ```
+3. **Verify Installation:**
+	After the installation is complete, you can verify that Ollama is installed correctly by running:
+    ```
+    ollama --version
+    ```
+This command should display the version of Ollama that has been installed, confirming a successful installation.
 
-# Getting Started
+## OLLAMA Shell Commands: 
+Once you've got OLLAMA up and running, you'll find that the shell commands are incredibly user-friendly. Here are some basic commands to get you started:
+* **List Models:** To see the available models, use the ollama list command.
+	```
+    ollama list
+    ```
+* **Run a Model:** To run a specific model, use the ollama run command followed by the model name.
+	```
+    ollama run <model_name>
+    ```
+* **Stop a Model:** To stop a running model, you can use the ollama stop command.
+	```
+    ollama stop <model_name>
+    ```
+    
+These are the basic commands for OLLAMA.
 
-* [What is Grav?](https://learn.getgrav.org/basics/what-is-grav)
-* [Install](https://learn.getgrav.org/basics/installation) Grav in few seconds
-* Understand the [Configuration](https://learn.getgrav.org/basics/grav-configuration)
-* Take a peek at our available free [Skeletons](https://getgrav.org/downloads/skeletons)
-* If you have questions, jump on our [Discord Chat Server](https://chat.getgrav.org)!
-* Have fun!
-
-# Exploring More
-
-* Have a look at our [Basic Tutorial](https://learn.getgrav.org/basics/basic-tutorial)
-* Dive into more [advanced](https://learn.getgrav.org/advanced) functions
-* Learn about the [Grav CLI](https://learn.getgrav.org/cli-console/grav-cli)
-* Review examples in the [Grav Cookbook](https://learn.getgrav.org/cookbook)
-* More [Awesome Grav Stuff](https://github.com/getgrav/awesome-grav)
-
-# Backers
-Support Grav with a monthly donation to help us continue development. [[Become a backer](https://opencollective.com/grav/contribute)]
-
-<img src="https://opencollective.com/grav/tiers/backers.svg?avatarHeight=36&width=600" />
-
-
-# Supporters
-Support Grav with a monthly donation to help us continue development. [[Become a supporter](https://opencollective.com/grav/contribute)]
-
-<img src="https://opencollective.com/grav/tiers/supporters.svg?avatarHeight=36&width=600" />
-
-
-# Sponsors
-Support Grav with a yearly donation to help us continue development. [[Become a sponsor](https://opencollective.com/grav/contribute)]
-
-<img src="https://opencollective.com/grav/tiers/sponsors.svg?avatarHeight=36&width=600" />
-
+ 
 # License
 
 See [LICENSE](LICENSE.txt)
 
-
-[gitflow-model]: http://nvie.com/posts/a-successful-git-branching-model/
-[gitflow-extensions]: https://github.com/nvie/gitflow
-
-# Running Tests
-
-First install the dev dependencies by running `composer install` from the Grav root.
-
-Then `composer test` will run the Unit Tests, which should be always executed successfully on any site.
-Windows users should use the `composer test-windows` command.
-You can also run a single unit test file, e.g. `composer test tests/unit/Grav/Common/AssetsTest.php`
-
-To run phpstan tests, you should run:
-
-* `composer phpstan` for global tests
-* `composer phpstan-framework` for more strict tests
-* `composer phpstan-plugins` to test all installed plugins
