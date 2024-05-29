@@ -6,6 +6,7 @@ var sendChatBtn = document.querySelector(".chat-input span");
 var userMessage = null; // Variable to store user's message
 var API_KEY = ""; // Paste your API key here
 var inputInitHeight = chatInput ? chatInput.scrollHeight : 0;
+
 var createChatLi = function (message, className) {
     // Create a chat <li> element with passed message and className
     var chatLi = document.createElement("li");
@@ -67,7 +68,7 @@ var generateResponse = async function (chatElement) {
 
                         const readMoreLink = document.createElement("a");
                         readMoreLink.href = "#";
-                        readMoreLink.textContent = " Read more";
+                        readMoreLink.textContent = " ...read more";
                         readMoreLink.classList.add("read-more");
                         readMoreLink.addEventListener("click", function (e) {
                             e.preventDefault();
@@ -95,16 +96,22 @@ var generateResponse = async function (chatElement) {
 };
 
 var showPopup = function (content) {
+    // Create a blur background element
+    var blurBackground = document.createElement("div");
+    blurBackground.classList.add("blur-background");
+
     // Create a popup element
     var popup = document.createElement("div");
     popup.classList.add("popup");
 
     // Create a close button for the popup
-    var closeBtn = document.createElement("button");
-    closeBtn.textContent = "Close";
-    closeBtn.classList.add("close-popup");
-    closeBtn.addEventListener("click", function () {
+    var closePopupBtn = document.createElement("button");
+    closePopupBtn.textContent = "X";
+    closePopupBtn.classList.add("close-popup");
+    closePopupBtn.addEventListener("click", function () {
         document.body.removeChild(popup);
+        document.body.removeChild(blurBackground);
+        document.body.classList.remove("show-popup");
     });
 
     // Create a content element for the popup
@@ -112,11 +119,15 @@ var showPopup = function (content) {
     popupContent.textContent = content;
 
     // Append the content and close button to the popup
-    popup.appendChild(closeBtn);
+    popup.appendChild(closePopupBtn);
     popup.appendChild(popupContent);
 
-    // Append the popup to the body
+    // Append the blur background and popup to the body
+    document.body.appendChild(blurBackground);
     document.body.appendChild(popup);
+
+    // Apply blur background
+    document.body.classList.add("show-popup");
 
     return popupContent;
 };
