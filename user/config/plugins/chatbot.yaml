@@ -5,7 +5,7 @@ route: /plugin/chatbot
 filters:
   category: blog
 chatbot_name: 'Q&A Chatbot'
-api_url: 'http://localhost:11434/api/generate'
+api_url: 'http://127.0.0.1:5000/stream_chatbot'
 query_param: 'browser,question,subject,encode'
 query_output: JSON
 Latitude: 12
