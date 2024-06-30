@@ -19,17 +19,27 @@ var createChatLi = function (message, className) {
 
 var generateResponse = async function (chatElement) {
     var messageElement = chatElement.querySelector("p");
+    var modelType={}
+    if(apiUrl==="http://127.0.0.1:5000/stream_chatbot"){
+        modelType={
+            input:userMessage
+        }
+    }
+    else{
+        modelType={
+            model: "phi3",
+            prompt: userMessage,
+            stream: true
+        }
+    }
+    console.log(modelType)
     var requestOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             // "Authorization": "Bearer ".concat(API_KEY)
         },
-        body: JSON.stringify({
-            model: "phi3",
-            prompt: userMessage,
-            stream: true
-        })
+        body: JSON.stringify(modelType)
     };
     if (messageElement) {
         messageElement.textContent = "Thinking...";
